@@ -21,7 +21,7 @@ $(document).on('knack-form-submit.view_86', function (event, view, record) {
       var img = res.field_7; // img tag
       var desc = res.field_8_raw; // description
       var price = res.field_9_raw; // price
-      var productPrice = (parseInt(price) * parseInt(qty)); // product price
+      var productPrice = (parseFloat(price) * parseInt(qty)); // product price
       var interval = setInterval(cartModal, 1000);
 
       function cartModal() {
@@ -29,26 +29,37 @@ $(document).on('knack-form-submit.view_86', function (event, view, record) {
         if ($('#kn-page-modal-0')) {
           clearInterval(interval);
           $('#kn-page-modal-0').prepend('\
-          <div class="product">\
-            <div class="product-image">' + img + '</div>\
-            <div class="product-details">\
-              <div calss="product-title">' + title + '</div>\
-              <p class="product-description">' + desc + '</p>\
+            <div class="shopping-cart">\
+              <div class="column-labels">\
+                <label class="product-image">Image</label>\
+                <label class="product-details">Product</label>\
+                <label class="product-price">Price</label>\
+                <label class="product-quantity">Quantity</label>\
+                <label class="product-removal">Remove</label>\
+                <label class="product-line-price">Total</label>\
+              </div>\
+              \
+              <div class="product">\
+                <div class="product-image">' + img + '</div>\
+                <div class="product-details">\
+                  <div calss="product-title">' + title + '</div>\
+                  <p class="product-description">' + desc + '</p>\
+                </div>\
+                <div class="product-price">' + price + '</div>\
+                <div class="product-quantity">\
+                  <input type="number" value="' + qty + '" min="1">\
+                </div>\
+                <div class="product-removal">\
+                  <button class="remove-product"> Remove </button>\
+                </div>\
+                <div class="product-line-price">' + productPrice + '</div>\
+              </div>\
             </div>\
-            <div class="product-price">$' + price + '</div>\
-            <div class="product-quantity">\
-              <input type="number" value="' + qty + '" min="1">\
-            </div>\
-            <div class="product-removal">\
-              <button class="remove-product"> Remove </button>\
-            </div>\
-            <div class="product-line-price">$' + productPrice + '</div>\
-          </div>\
-        ');
+          ');
         } else {
           timer++;
           if (timer > 5) {
-          	clearInterval(interval);
+            clearInterval(interval);
           }
         }
       }
