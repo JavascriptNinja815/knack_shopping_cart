@@ -116,9 +116,9 @@ label {
   width: 20%;
 }
 
-/* .product .product-image img {
-  width: 100px;
-} */
+.product .product-image img {
+  width: 150px;
+}
 
 .product .product-details .product-title {
   margin-right: 20px;
@@ -269,6 +269,6 @@ label {
 }
 
 /* Check Out Button */
-#view_87 {
+#view_87 .kn-submit {
   text-align: center;
 }
