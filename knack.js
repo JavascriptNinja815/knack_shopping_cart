@@ -11,6 +11,10 @@ var shippingRate = 15.00;
 var fadeTime = 300;
 
 $(document).on('knack-form-submit.view_86', function (event, view, record) {
+  
+});
+
+$(document).on('knack-form-submit.view_86', function (event, view, record) {
   var qty = $('#view_86-field_83').value;
 
   var recordId = record.field_82_raw[0].id;
